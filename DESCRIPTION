@@ -1,0 +1,21 @@
+Package: dt
+Title: Core modeling tools
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Krzysztof",
+           family = "Sakrejda",
+           role = c("aut", "cre"),
+           email = "krzysztof@mostek.io",
+           comment = c(ORCID = "0000-0001-7587-355X"))
+Description: Miscellaneous tools for modeling basic components of various datasets with a focus on the time domain, hazard-based models, and flexibiility. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 2.1.0)
+Imports: 
+    glue,
+    magrittr,
+    rlang,
+    purrr
