@@ -12,6 +12,7 @@ flat_interact = function(a, b) {
     rlang::abort("RHS object is not in 'row' format.")
   }
   o = flat_permute(a,b)
+  o$label = paste(a$label, b$label, sep = ':::')
   o$type = paste(a$type, b$type, sep = ':::')
   o$format = "row"
   return(o) 

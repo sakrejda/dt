@@ -14,6 +14,8 @@
 #' @param ub upper bound of interval
 #' @param K number of knots
 #' @return locations of all knots
+#'
+#' @export
 knot_placer_basic_interval = function(lb, ub, K = 4) {
   width = ub - lb
   if (K > 3) {

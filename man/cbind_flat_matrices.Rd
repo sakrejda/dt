@@ -4,10 +4,12 @@
 \alias{cbind_flat_matrices}
 \title{Combine two matrices into a single (flat) matix}
 \usage{
-cbind_flat_matrices(a, b)
+cbind_flat_matrices(a, ...)
 }
 \arguments{
 \item{a}{first flat matrix}
+
+\item{...}{additional flat matrices}
 
 \item{b}{second flat matrix}
 }

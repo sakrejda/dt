@@ -5,6 +5,8 @@
 #' @param h height parameter
 #' @param s knot width/scaling parameter
 #' @return value at x for knot at k with parameter h
+#'
+#' @export
 b_spline_basic_radial_basis = function(x, k, h = 1, s = 1) {
   if (length(x) > 1)
     return(purrr::map_dbl(x, ~ b_spline_basic_radial_basis(., k, h, s)))

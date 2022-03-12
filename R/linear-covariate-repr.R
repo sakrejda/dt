@@ -11,6 +11,7 @@ linear_covariate_repr = function(
 ) {
   N = length(x) 
   return(list(
+    label = label,
     type = "linear-covariate",
     format = "representation",
     x = x, N = length(x), K = 1,

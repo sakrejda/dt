@@ -14,6 +14,7 @@ discrete_intercept_repr = function(
     nze_per_col[[k]] = which(x == unique_values[k])
   }
   return(list(
+    label = label,
     type = "discrete-intercept",
     format = "representation",
     nze_per_col = nze_per_col,

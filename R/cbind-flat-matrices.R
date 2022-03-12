@@ -3,10 +3,17 @@
 #'
 #' @param a first flat matrix
 #' @param b second flat matrix
+#' @param ... additional flat matrices
 #' @return flat (row-wise) matrix, cbind(a,b)
 #'
 #' @export
-cbind_flat_matrices = function(a, b) {
+cbind_flat_matrices = function(a, ...) {
+  args = list(...)
+  if (length(args) == 0) {
+    return(a)
+  } else {
+    b = args[[1]]
+  }
   if (a$N != b$N) {
     msg = glue::glue("Function can only process",
                      "matrices with matching row counts.")
@@ -44,5 +51,10 @@ cbind_flat_matrices = function(a, b) {
   o$row_start_idx = o$row_nze_idx %>%
     duplicated() %>% `!`() %>% which()
   o$row_n_nze = o$row_nze_idx %>% sort() %>% table()
-  return(o)
+  if (length(args) == 1) {
+    return(o)
+  } else {
+    args[[1]] = o
+    return(purrr::lift_dl(cbind_flat_matrices)(args))
+  }
 }

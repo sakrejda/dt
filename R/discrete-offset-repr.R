@@ -35,5 +35,7 @@ discrete_offset_repr = function(
     N = length(x),
     K = length(offset_values),
     row_names = as.character(1:length(x)),
-    col_names = paste(label, "level", offset_values, sep = "::")))
+    col_names = paste(label, "level", offset_values, sep = "::"),
+    label = label,
+    reference = reference))
 }

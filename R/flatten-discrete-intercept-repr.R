@@ -41,7 +41,8 @@ flatten_discrete_intercept_repr = function(x) {
     row_nze_idx = row_nze_idx,
     col_nze_idx = col_nze_idx,
     row_names = x$row_names,
-    col_names = x$col_names
+    col_names = x$col_names,
+    label = x$label
   )
   return(o)
 }

@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "krzysztof@mostek.io",
            comment = c(ORCID = "0000-0001-7587-355X"))
-Description: Miscellaneous tools for modeling basic components of various datasets with a focus on the time domain, hazard-based models, and flexibiility. 
+Description: Contains tools for modeling basic components of various datasets with a focus on the time domain, hazard-based models, and flexible approaches.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

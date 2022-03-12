@@ -36,6 +36,7 @@ flatten_b_spline_covariate_repr = function(x) {
     col_nze_idx = o$col_nze_idx,
     row_nze_idx = o$row_nze_idx,
     row_names = x$row_names,
-    col_names = x$col_names
+    col_names = x$col_names,
+    label = x$label
   ))
 }

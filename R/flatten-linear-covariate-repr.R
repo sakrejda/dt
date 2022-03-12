@@ -1,3 +1,10 @@
+
+#' List representation of linear covariate
+#'
+#' @param x covariate representation
+#' @return flat version
+#'
+#' @export
 flatten_linear_covariate_repr = function(x) {
   if (x$type != 'linear-covariate') {
     msg = glue::glue("Function can only process a *linear* covariate.")
@@ -26,7 +33,8 @@ flatten_linear_covariate_repr = function(x) {
     row_nze_idx = fv$row_nze_idx,
     col_nze_idx = fv$col_nze_idx,
     row_names = x$row_names,
-    col_names = x$col_names
+    col_names = x$col_names,
+    label = x$label
   )
   return(fc)
 }

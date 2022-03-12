@@ -21,6 +21,7 @@ b_spline_covariate_repr = function(
   N = length(x)
   K = length(knots)
   return(list(
+    label = label,
     type = "b-spline-covariate",
     format = "representation",
     N = length(x), K = length(knots),
