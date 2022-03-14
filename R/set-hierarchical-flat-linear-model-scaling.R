@@ -9,11 +9,19 @@ set_hierarchical_flat_linear_model_scaling = function(m, name, idx) {
   if (missing(idx)) {
     if (missing(name)) {
       stop("Either 'name' or 'idx' is required.")
-    } else if (!(name %in% m$component_labels)) {
+    } else if (name %in% m$component_labels) {
       idx = m$component_col_ranges[[name]]
+    } else {
+      stop(glue::glue("'name' parameter ('{name}') not found in model.",
+           name = name))
     }
   }
-  idx = sort(idx)
+  if (name %in% m$component_labels && !is.null(name)) {
+    idx = sort(idx)
+  } else {
+    stop(glue::glue("'name' parameter ('{name}') not found in model.",
+                    name = name))
+  }
   if (!all(diff(idx) == 1)) {
     stop("Hierarchical variances must be contiguous.")
   }
