@@ -15,9 +15,10 @@ build_flat_linear_model = function(
     component_formats = purrr::map_chr(args, `[[`, 'format'),
     component_is_permutation = purrr::map_chr(args, `[[`, 'type') %>%
       stringr::str_detect(':::'),
-    component_row_count = purrr::map_int(args, `[[`, 'N'),
-    component_col_count = purrr::map_int(args, `[[`, 'K'),
-    component_col_end_offset = purrr::map_int(args, `[[`, 'K') %>% cumsum()
+    component_row_count = purrr::map(args, `[[`, 'N') %>% purrr::map_int(as.integer),
+    component_col_count = purrr::map(args, `[[`, 'K') %>% purrr::map_int(as.integer),
+    component_col_end_offset = purrr::map(args, `[[`, 'K') %>% 
+      purrr::map_int(as.integer) %>% cumsum()
   )
   flat_model$component_col_names = purrr::map(args, `[[`, 'col_names') %>%
     purrr::flatten_chr()
