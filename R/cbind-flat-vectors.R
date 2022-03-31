@@ -38,6 +38,7 @@ cbind_flat_vectors = function(a, b) {
   o$row_nze_idx = new_row_nze_idx
   o$row_start_idx = which(!duplicated(o$row_nze_idx))
   o$row_n_nze = tabulate(o$row_nze_idx)
+  o$row_n_nze = o$row_n_nze[o$row_n_nze != 0]
   o$row_names = a$row_names
   o$col_names = c(a$col_names, b$col_names)
   return(o)

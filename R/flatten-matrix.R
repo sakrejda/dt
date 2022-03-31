@@ -19,6 +19,8 @@ row_flatten_matrix = function(x) {
   row_nze_idx = row[nze_idx]
   col_nze_idx = col[nze_idx]
   nze_value = t(x)[nze_idx]
+  row_n_nze = tabulate(row_nze_idx)
+  row_n_nze = row_n_nze[row_n_nze != 0]
   o = list(
     type = "matrix",
     format = "row",
@@ -28,7 +30,7 @@ row_flatten_matrix = function(x) {
     yze_idx = yze_idx,
     nze_value = nze_value,
     row_start_idx = which(!duplicated(row_nze_idx)),
-    row_n_nze = tabulate(row_nze_idx),
+    row_n_nze = row_n_nze,
     col_nze_idx = col_nze_idx,
     row_nze_idx = row_nze_idx,
     row_names = rownames(x),

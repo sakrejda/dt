@@ -27,6 +27,7 @@ flatten_discrete_offset_repr = function(x) {
   nze_value = rep(1, length(nze_idx))
   row_start_idx = which(!duplicated(row_nze_idx))
   row_n_nze = tabulate(row_nze_idx)  
+  row_n_nze = row_n_nze[row_n_nze != 0]
   o = list(
     type = "discrete-offset",
     format = "row",

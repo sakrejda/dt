@@ -20,6 +20,7 @@ flat_matrix_times_column_vector = function(m, v) {
   }
   m$row_start_idx = which(!duplicated(m$row_nze_idx))
   m$row_n_nze = tabulate(m$row_nze_idx)
+  m$row_n_nze = m$row_n_nze[m$row_n_nze != 0]
   if (!is.null(v$col_names)) {
     m$col_names = paste(m$col_names, v$col_names, sep = ':::')
   }
