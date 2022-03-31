@@ -27,9 +27,8 @@ row_flatten_matrix = function(x) {
     nze_idx = nze_idx,
     yze_idx = yze_idx,
     nze_value = nze_value,
-    row_start_idx = row_nze_idx %>% duplicated() %>%
-      `!`() %>% which(),
-    row_n_nze = row_nze_idx %>% sort() %>% table(),
+    row_start_idx = which(!duplicated(row_nze_idx)),
+    row_n_nze = tabulate(row_nze_idx),
     col_nze_idx = col_nze_idx,
     row_nze_idx = row_nze_idx,
     row_names = rownames(x),

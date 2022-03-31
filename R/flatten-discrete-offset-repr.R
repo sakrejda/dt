@@ -25,10 +25,8 @@ flatten_discrete_offset_repr = function(x) {
   col_nze_idx = col_nze_idx[row_order]
   nze_idx = x$K * (row_nze_idx - 1) + col_nze_idx
   nze_value = rep(1, length(nze_idx))
-  row_start_idx = row_nze_idx %>% duplicated() %>%
-    `!`() %>% which()
-  row_n_nze = row_nze_idx %>% sort() %>% table()
-  
+  row_start_idx = which(!duplicated(row_nze_idx))
+  row_n_nze = tabulate(row_nze_idx)  
   o = list(
     type = "discrete-offset",
     format = "row",

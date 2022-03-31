@@ -1,5 +1,5 @@
 test_that("can pick out a flat matrix column.", {
-  n_tests = 20
+  n_tests = 200
   for (i in 1:n_tests) {
     N = sample.int(n = 1000, size = 1)
     K = sample.int(n = 50, size = 1) + 5

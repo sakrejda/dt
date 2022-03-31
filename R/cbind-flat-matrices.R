@@ -20,9 +20,7 @@ cbind_flat_matrices = function(a, ...) {
     rlang::abort(msg, a = a, b = b)
   }
 
-  for (i in seq_along(b$row_nze_idx)) {
-      b$col_nze_idx[i] = b$col_nze_idx[i] + a$K
-  }
+  b$col_nze_idx = b$col_nze_idx + a$K
   o = list(
     N = a$N,
     K = a$K + b$K,
@@ -42,19 +40,19 @@ cbind_flat_matrices = function(a, ...) {
     new_row_nze_idx[i] = o$row_nze_idx[j]
     new_col_nze_idx[i] = o$col_nze_idx[j]
   }
-  o$nze_idx = list(new_row_nze_idx, new_col_nze_idx) %>%
-    purrr::pmap( ~ (..1 - 1) * o$K + ..2) %>%
-    purrr::flatten_dbl()
+  o$nze_idx = (new_row_nze_idx - 1) * o$K + new_col_nze_idx
   o$nze_value = new_nze_value
   o$col_nze_idx = new_col_nze_idx
   o$row_nze_idx = new_row_nze_idx
-  o$row_start_idx = o$row_nze_idx %>%
-    duplicated() %>% `!`() %>% which()
-  o$row_n_nze = o$row_nze_idx %>% sort() %>% table()
+  o$row_start_idx = which(!duplicated(o$row_nze_idx))
+  o$row_n_nze = tabulate(o$row_nze_idx)
   if (length(args) == 1) {
     return(o)
   } else {
     args[[1]] = o
-    return(purrr::lift_dl(cbind_flat_matrices)(args))
+    for (i in 2:length(args)) {
+      args[[1]] = cbind_flat_matrices(args[[1]], args[[i]])
+    }
+    return(args[[1]])
   }
 }

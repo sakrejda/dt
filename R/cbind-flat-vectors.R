@@ -36,9 +36,8 @@ cbind_flat_vectors = function(a, b) {
   o$nze_value = new_nze_value
   o$col_nze_idx = new_col_nze_idx
   o$row_nze_idx = new_row_nze_idx
-  o$row_start_idx = o$row_nze_idx %>%
-    duplicated() %>% `!`() %>% which()
-  o$row_n_nze = o$row_nze_idx %>% sort() %>% table()
+  o$row_start_idx = which(!duplicated(o$row_nze_idx))
+  o$row_n_nze = tabulate(o$row_nze_idx)
   o$row_names = a$row_names
   o$col_names = c(a$col_names, b$col_names)
   return(o)
