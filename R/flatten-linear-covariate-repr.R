@@ -19,14 +19,13 @@ flatten_linear_covariate_repr = function(x) {
     rlang::abort(msg, component = x)
   }
   fv = flatten_vector(x$x)
-  fc = list(
+  fc = build_flat_model_component(
     type = 'linear-covariate',
     format = 'row',
     N = x$N,
     K = 1,
     n_nze = fv$n_nze,
     nze_idx = fv$nze_idx,
-    yze_idx = fv$yze_idx,
     nze_value = fv$nze_value,
     row_start_idx = fv$row_start_idx,
     row_n_nze = fv$row_n_nze,

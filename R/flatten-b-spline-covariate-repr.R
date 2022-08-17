@@ -22,14 +22,13 @@ flatten_b_spline_covariate_repr = function(x) {
       o = cbind_flat_matrices(o, col)
     }
   }
-  return(list(
+  mc = build_flat_model_component(
     type = "b-spline-covariate",
     format = "row",
     N = x$N,
     K = x$K,
     n_nze = o$n_nze,
     nze_idx = o$nze_idx,
-    yze_idx = o$yze_idx,
     nze_value = o$nze_value,
     row_start_idx = o$row_start_idx,
     row_n_nze = o$row_n_nze,
@@ -38,5 +37,6 @@ flatten_b_spline_covariate_repr = function(x) {
     row_names = x$row_names,
     col_names = x$col_names,
     label = x$label
-  ))
+  )
+  return(mc)
 }

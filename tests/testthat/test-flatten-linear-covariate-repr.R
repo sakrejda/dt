@@ -18,7 +18,6 @@ test_that("linear covariate representation is correctly flattened (include zero 
   expect_equal(c(or$N, or$K), c(f_or$N, f_or$K))
   expect_equal(f_or$n_nze, length(x[x != 0]))
   expect_equal(f_or$nze_idx, which(x != 0))
-  expect_equal(f_or$yze_idx, which(x == 0))
   expect_equal(f_or$nze_value, x[x != 0])
   expect_equal(f_or$row_start_idx, 1:29)
   expect_equal(f_or$row_n_nze, rep(1, 29))

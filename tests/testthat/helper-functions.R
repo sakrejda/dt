@@ -8,6 +8,8 @@
     for (j in 1:n_zero) {
       m[zero_row[j], zero_col[j]] = 0
     }
+    rownames(m) = rep('', nrow(m))
+    colnames(m) = rep('', ncol(m))
     return(m)
   }
 
