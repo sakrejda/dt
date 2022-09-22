@@ -41,5 +41,7 @@ build_flat_linear_model = function(
   flat_model$n_hierarchical_variances = 0
   flat_model$hierarchical_sd_start = numeric()
   flat_model$hierarchical_sd_n = numeric()
+  flat_model$component_col_constant = numeric()
+  flat_model$component_col_estimated = 1:K
   return(flat_model)
 }
