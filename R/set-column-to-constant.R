@@ -21,7 +21,7 @@ set_column_to_constant = function(m, name, idx) {
     stop("'scale' parameter must be length 1 or contain one entry per column.")
   }
   m$component_col_constant = c(m$component_col_constant, idx) |> sort()
-  m$component_col_estimated = setdiff(1:K, m$component_col_constant)
+  m$component_col_estimated = setdiff(1:m$K, m$component_col_constant)
 
   return(m)
 }
